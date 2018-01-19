@@ -31,9 +31,9 @@ module OpenWeather
 
       if options[:city] && options[:country]
         options[:q] = "#{options[:country]},#{options[:city]}"
-      else options[:city]
+      elsif options[:city]
         options[:q] = "#{options[:city]}"
-      else options[:country]
+      elsif options[:country]
         options[:q] = "#{options[:country]}"
       end
       
