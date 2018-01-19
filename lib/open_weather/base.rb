@@ -40,9 +40,13 @@ module OpenWeather
 
     def parse_response(response)
       return if response.nil?
-      @weather_info = JSON.parse(response)
-      @status       = @weather_info['cod']
-      @message      = @weather_info['message'] unless @status
+      begin
+        @weather_info = JSON.parse(response)
+        @status       = @weather_info['cod']
+        @message      = @weather_info['message'] unless @status
+      rescue
+        @weather_info = response
+      end
       @weather_info
     end
 
